@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://sohaib25225-gif.github.io/portfolio/sitemap.xml
