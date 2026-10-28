@@ -201,6 +201,10 @@
     transition:border-color .2s, transform .2s;
   }
   .proj-card:hover{border-color:var(--violet);transform:translateY(-4px);}
+  .proj-card.featured{grid-column:1 / -1;border-color:var(--cyan);background:linear-gradient(135deg,rgba(69,224,213,.07),rgba(183,124,255,.07)),var(--surface);}
+  .proj-card.featured h3{font-size:1.35rem;}
+  .proj-card.featured p{max-width:760px;}
+  .badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:#04141f;background:var(--cyan);padding:3px 10px;border-radius:20px;margin-bottom:12px;}
   .proj-top{display:flex;justify-content:space-between;align-items:flex-start;}
   .proj-card h3{font-size:1.1rem;}
   .proj-card p{color:var(--muted);font-size:.9rem;margin-top:10px;}
@@ -434,6 +438,20 @@
   </div>
   <div class="proj-grid">
 
+    <a class="proj-card featured" href="https://github.com/sohaib25225-gif/digital-hub.git" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div>
+          <span class="badge">Latest &middot; Largest project</span>
+          <h3>Digital Hub</h3>
+        </div>
+        <span class="proj-link">↗</span>
+      </div>
+      <div>
+        <p>Full-stack platform to publish and sell courses and digital products. Includes JWT authentication, course and product APIs, protected content access, student and admin dashboards, file uploads, and a payment-ready purchase flow (payment gateway integration in progress), backed by an automated test suite.</p>
+        <div class="stack-row"><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">FastAPI</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Supabase</span><span class="stack-tag">JWT</span></div>
+      </div>
+    </a>
+
     <a class="proj-card" href="https://github.com/sohaib25225-gif/Responsive-AI-Tools-Resources-Hub..git" target="_blank" rel="noopener">
       <div class="proj-top">
         <h3>AI Tools & Resources Hub</h3>
@@ -451,8 +469,8 @@
         <span class="proj-link">↗</span>
       </div>
       <div>
-        <p>Automated content agent that drafts and publishes AI/IT news posts to LinkedIn via GitHub Actions.</p>
-        <div class="stack-row"><span class="stack-tag">Python</span><span class="stack-tag">Claude CLI</span><span class="stack-tag">GitHub Actions</span></div>
+        <p>Prototype automation agent that drafts AI/tech news posts with the Claude CLI on a GitHub Actions schedule. Its LinkedIn publishing step was limited by API permissions, which led to the manual-review design of my AI News Content Agent.</p>
+        <div class="stack-row"><span class="stack-tag">Python</span><span class="stack-tag">Claude CLI</span><span class="stack-tag">GitHub Actions</span><span class="stack-tag">LinkedIn API</span></div>
       </div>
     </a>
 

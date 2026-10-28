@@ -4,7 +4,7 @@ A modern, responsive personal portfolio website showcasing projects, experience,
 
 ## Description
 
-This portfolio website serves as a professional online presence for Sohaib Ahmad, a BSAI student and Full Stack Developer Intern. The site features a dark theme with cyan and violet accent colors, terminal-style UI elements, and a grid-based background that reflects a technical, modern aesthetic. It includes sections for about, experience, certifications, projects, skills, and contact information.
+This portfolio website serves as a professional online presence for Sohaib Ahmad, a BSAI student working toward AI Engineering, who completed a Full Stack Development internship at Decode Labs. The site features a dark theme with cyan and violet accent colors, terminal-style UI elements, and a grid-based background that reflects a technical, modern aesthetic. It includes sections for about, experience, certifications, projects, skills, and contact information.
 
 ## Features
 
@@ -107,8 +107,8 @@ To customize this portfolio for your own use:
 - **LinkedIn**: [https://www.linkedin.com/in/sohaib-ahmad-181478367](https://www.linkedin.com/in/sohaib-ahmad-181478367)
 - **Email**: sohaib25225@gmail.com
 - **Location**: Shabqadar, Charsadda, Pakistan
-- **Education**: BSAI (4th Semester), Abasyn University, Peshawar
-- **Current Role**: Full Stack Developer Intern @ Decode Labs
+- **Education**: BSAI (5th Semester), Abasyn University, Peshawar
+- **Experience**: Completed Full Stack Development Internship @ Decode Labs (Jun-Jul 2026)
 
 ---
 
