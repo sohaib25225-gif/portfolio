@@ -201,6 +201,39 @@
   .cert-card .org{color:var(--muted);font-size:.85rem;}
   .cert-card .date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--violet);margin-top:12px;display:block;}
 
+
+  /* floating hero photo */
+  .photo-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px;}
+  .photo-card{position:relative;width:290px;aspect-ratio:576/1024;border-radius:30px;padding:3px;background:linear-gradient(160deg,var(--cyan),var(--violet));box-shadow:0 30px 80px rgba(69,224,213,.18),0 12px 44px rgba(183,124,255,.22);animation:floatY 6s ease-in-out infinite;}
+  .photo-card img{width:100%;height:100%;display:block;border-radius:27px;object-fit:cover;}
+  .photo-glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(69,224,213,.22),transparent 65%);filter:blur(30px);z-index:-1;animation:pulse 6s ease-in-out infinite;}
+  .float-chip{position:absolute;background:rgba(18,24,38,.92);border:1px solid var(--line);padding:9px 15px;border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.45);display:flex;align-items:center;gap:8px;animation:floatY2 5s ease-in-out infinite;white-space:nowrap;}
+  .float-chip i{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .fc1{top:70px;left:-4px;animation-delay:-1s;}
+  .fc2{top:250px;right:-14px;animation-delay:-2.5s;}
+  .fc3{bottom:70px;left:6px;animation-delay:-3.5s;}
+  @keyframes floatY{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-16px) rotate(1deg);}}
+  @keyframes floatY2{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes pulse{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+
+  /* project thumbnails */
+  .proj-card{justify-content:flex-start;}
+  .proj-thumb{height:158px;margin:-26px -26px 20px;border-radius:12px 12px 0 0;background:radial-gradient(circle at 30% 20%,rgba(69,224,213,.10),transparent 60%),linear-gradient(135deg,#0d1424,#161f33);border-bottom:1px solid var(--line);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:6px 10px;}
+  .proj-thumb svg{width:100%;height:100%;display:block;transition:transform .35s ease;}
+  .proj-card:hover .proj-thumb svg{transform:scale(1.06);}
+  .proj-card > div:last-child{display:flex;flex-direction:column;flex:1;}
+  .proj-card .stack-row{margin-top:auto;padding-top:16px;}
+
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+  .svc-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color .2s, transform .2s;}
+  .svc-card:hover{border-color:var(--cyan);transform:translateY(-4px);}
+  .svc-icon{width:48px;height:48px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .svc-icon svg{width:24px;height:24px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .svc-card h3{font-size:1.1rem;margin-bottom:8px;}
+  .svc-card p{color:var(--muted);font-size:.92rem;}
+  .svc-cta{margin-top:34px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:var(--muted);}
+
   /* PROJECTS */
   .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
   .proj-card{
@@ -254,8 +287,10 @@
     nav ul{display:none;}
     nav .menu-btn{display:block;}
     .hero-grid{grid-template-columns:1fr;}
-    .avatar-wrap{order:-1;margin-bottom:10px;}
-    .avatar-ring{width:180px;height:180px;}
+    .photo-wrap{order:-1;min-height:430px;margin-bottom:10px;}
+    .photo-card{width:225px;}
+    .float-chip{font-size:.7rem;padding:7px 11px;}
+    .fc1{top:40px;left:0;} .fc2{top:190px;right:0;} .fc3{bottom:40px;left:6px;}
     .avatar-initials{font-size:2.6rem;}
     .about-grid{grid-template-columns:1fr;}
     .contact-box{grid-template-columns:1fr;}
@@ -279,6 +314,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certs">Certifications</a></li>
     <li><a href="#learning">Learning</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -306,10 +342,12 @@
       </div>
     </div>
 
-    <div class="avatar-wrap">
-      <div class="avatar-ring">
-        <img src="assets/profile.jpg" alt="Sohaib Ahmad">
-      </div>
+    <div class="photo-wrap">
+      <div class="photo-glow"></div>
+      <div class="photo-card"><img src="assets/profile.jpg" alt="Sohaib Ahmad"></div>
+      <div class="float-chip fc1"><i style="background:var(--cyan)"></i>Python</div>
+      <div class="float-chip fc2"><i style="background:var(--violet)"></i>Agentic AI</div>
+      <div class="float-chip fc3"><i style="background:var(--amber)"></i>LLM Apps</div>
     </div>
   </div>
 </section>
@@ -428,6 +466,25 @@
   </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services" data-reveal>
+  <div class="sec-head">
+    <div class="eyebrow">Services</div>
+    <h2>What I can build for you.</h2>
+    <p>I'm a student developer taking on small, well-scoped projects. Here is where I can help.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/><path d="M12 8V4.5M10 4.5h4M2.5 13v2M21.5 13v2"/></svg></div><h3>AI Automation &amp; LLM Integration</h3><p>Python workflows and agents built on the Gemini API: content drafting, news and data pipelines, and well-designed prompts.</p><div class="stack-row"><span class="stack-tag">Python</span><span class="stack-tag">Gemini API</span><span class="stack-tag">Prompt Engineering</span></div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="6" rx="1.5"/><rect x="3.5" y="14" width="17" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01M11 7h6M11 17h6"/></svg></div><h3>Backend &amp; REST APIs</h3><p>Clean REST APIs with Node.js/Express or FastAPI, connected to SQLite or PostgreSQL, with input validation and basic authentication.</p><div class="stack-row"><span class="stack-tag">FastAPI</span><span class="stack-tag">Node.js</span><span class="stack-tag">SQL</span></div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M3 8.5h18"/></svg></div><h3>Responsive Web Development</h3><p>Fast, mobile-friendly websites, landing pages and small web apps built with HTML, CSS and JavaScript.</p><div class="stack-row"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span></div></div>
+    <div class="svc-card"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg></div><h3>Python Scripts &amp; Task Automation</h3><p>Scripts that remove repetitive work: cleaning data, generating reports and scheduling jobs with GitHub Actions.</p><div class="stack-row"><span class="stack-tag">Python</span><span class="stack-tag">GitHub Actions</span></div></div>
+  </div>
+  <div class="svc-cta">
+    <a class="btn btn-primary" href="mailto:sohaib25225@gmail.com?subject=Project%20inquiry">Discuss a project</a>
+    <span>Tell me what you need and I'll reply with an honest estimate.</span>
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects" data-reveal>
   <div class="sec-head">
@@ -437,6 +494,7 @@
   <div class="proj-grid">
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/Responsive-AI-Tools-Resources-Hub..git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="AI tools web app mockup" xmlns="http://www.w3.org/2000/svg"><rect x="24" y="22" width="216" height="116" rx="10" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="38" cy="36" r="3" fill="#ff6b6b" stroke="none" stroke-width="1.5" /><circle cx="49" cy="36" r="3" fill="#ffb454" stroke="none" stroke-width="1.5" /><circle cx="60" cy="36" r="3" fill="#5be39b" stroke="none" stroke-width="1.5" /><rect x="74" y="29" width="150" height="14" rx="7" fill="#121826" stroke="#334060" stroke-width="1" /><text x="86" y="39" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="7" font-weight="400" fill="#8993a8" text-anchor="start">search AI tools</text><rect x="36" y="56" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="46" cy="66" r="4" fill="#45e0d5" stroke="none" stroke-width="1.5" /><line x1="54" y1="66" x2="86" y2="66" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="44" y1="78" x2="86" y2="78" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="102" y="56" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="112" cy="66" r="4" fill="#b77cff" stroke="none" stroke-width="1.5" /><line x1="120" y1="66" x2="152" y2="66" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="110" y1="78" x2="152" y2="78" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="168" y="56" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="178" cy="66" r="4" fill="#ffb454" stroke="none" stroke-width="1.5" /><line x1="186" y1="66" x2="218" y2="66" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="176" y1="78" x2="218" y2="78" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="36" y="98" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="46" cy="108" r="4" fill="#5be39b" stroke="none" stroke-width="1.5" /><line x1="54" y1="108" x2="86" y2="108" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="44" y1="120" x2="86" y2="120" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="102" y="98" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="112" cy="108" r="4" fill="#45e0d5" stroke="none" stroke-width="1.5" /><line x1="120" y1="108" x2="152" y2="108" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="110" y1="120" x2="152" y2="120" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="168" y="98" width="60" height="34" rx="6" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="178" cy="108" r="4" fill="#b77cff" stroke="none" stroke-width="1.5" /><line x1="186" y1="108" x2="218" y2="108" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="176" y1="120" x2="218" y2="120" stroke="#2b3550" stroke-width="3" stroke-linecap="round" /><rect x="256" y="44" width="44" height="92" rx="9" fill="#121826" stroke="#45e0d5" stroke-width="2" /><rect x="262" y="54" width="32" height="14" rx="3" fill="#1b2437" stroke="#334060" stroke-width="1" /><rect x="262" y="74" width="32" height="14" rx="3" fill="#1b2437" stroke="#334060" stroke-width="1" /><rect x="262" y="94" width="32" height="14" rx="3" fill="#1b2437" stroke="#334060" stroke-width="1" /><line x1="270" y1="126" x2="286" y2="126" stroke="#45e0d5" stroke-width="2" stroke-linecap="round" /></svg></div>
       <div class="proj-top">
         <h3>AI Tools & Resources Hub</h3>
         <span class="proj-link">↗</span>
@@ -448,17 +506,19 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/claude-linkedin-post-writer.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bot drafting a social media post" xmlns="http://www.w3.org/2000/svg"><rect x="110" y="20" width="190" height="120" rx="10" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="134" cy="46" r="12" fill="#b77cff" stroke="none" stroke-width="1.5" /><line x1="154" y1="42" x2="214" y2="42" stroke="#e7ecf5" stroke-width="5" stroke-linecap="round" /><line x1="154" y1="54" x2="194" y2="54" stroke="#8993a8" stroke-width="4" stroke-linecap="round" /><line x1="124" y1="76" x2="284" y2="76" stroke="#3a4663" stroke-width="5" stroke-linecap="round" /><line x1="124" y1="90" x2="274" y2="90" stroke="#3a4663" stroke-width="5" stroke-linecap="round" /><line x1="124" y1="104" x2="230" y2="104" stroke="#3a4663" stroke-width="5" stroke-linecap="round" /><line x1="124" y1="122" x2="196" y2="122" stroke="#45e0d5" stroke-width="5" stroke-linecap="round" /><rect x="22" y="54" width="64" height="52" rx="14" fill="#1b2437" stroke="#45e0d5" stroke-width="2" /><circle cx="44" cy="76" r="5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="64" cy="76" r="5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><line x1="46" y1="92" x2="62" y2="92" stroke="#45e0d5" stroke-width="2.5" stroke-linecap="round" /><line x1="54" y1="54" x2="54" y2="44" stroke="#45e0d5" stroke-width="2" stroke-linecap="round" /><circle cx="54" cy="41" r="4" fill="#ffb454" stroke="none" stroke-width="1.5" /><line x1="90.0" y1="80.0" x2="99.0" y2="80.0" stroke="#ffb454" stroke-width="2.5" stroke-linecap="round"/><polygon points="106.0,80.0 99.0,83.5 99.0,76.5" fill="#ffb454"/><path d="M286,22 Q286,32 296,32 Q286,32 286,42 Q286,32 276,32 Q286,32 286,22Z" fill="#ffb454"/></svg></div>
       <div class="proj-top">
         <h3>Claude LinkedIn Post Writer</h3>
         <span class="proj-link">↗</span>
       </div>
       <div>
-        <p>Prototype automation agent that drafts AI/tech news posts with the Claude CLI on a GitHub Actions schedule. Its LinkedIn publishing step was limited by API permissions, which led to the manual-review design of my AI News Content Agent.</p>
+        <p>Prototype agent that drafts AI news posts with the Claude CLI on a GitHub Actions schedule. LinkedIn API limits led to the manual-review design of my AI News Content Agent.</p>
         <div class="stack-row"><span class="stack-tag">Python</span><span class="stack-tag">Claude CLI</span><span class="stack-tag">GitHub Actions</span><span class="stack-tag">LinkedIn API</span></div>
       </div>
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/backend-api-project2.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Client and server exchanging API requests" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="50" width="64" height="44" rx="6" fill="#1b2437" stroke="#45e0d5" stroke-width="2" /><rect x="26" y="58" width="48" height="28" rx="3" fill="#121826" stroke="#334060" stroke-width="1" /><line x1="10" y1="100" x2="90" y2="100" stroke="#45e0d5" stroke-width="3" stroke-linecap="round" /><text x="50" y="76" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#45e0d5" text-anchor="middle">client</text><rect x="228" y="34" width="74" height="26" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="240" cy="47" r="3.5" fill="#5be39b" stroke="none" stroke-width="1.5" /><line x1="250" y1="47" x2="292" y2="47" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><rect x="228" y="66" width="74" height="26" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="240" cy="79" r="3.5" fill="#ffb454" stroke="none" stroke-width="1.5" /><line x1="250" y1="79" x2="292" y2="79" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><rect x="228" y="98" width="74" height="26" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="240" cy="111" r="3.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><line x1="250" y1="111" x2="292" y2="111" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="88.0" y1="64.0" x2="214.0" y2="64.0" stroke="#ffb454" stroke-width="2.5" stroke-linecap="round"/><polygon points="222.0,64.0 214.0,68.0 214.0,60.0" fill="#ffb454"/><rect x="128" y="52" width="46" height="16" rx="8.0" fill="#121826" stroke="#ffb454" stroke-width="1.5" /><text x="151.0" y="63.0" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#ffb454" text-anchor="middle">GET</text><line x1="222.0" y1="102.0" x2="96.0" y2="102.0" stroke="#5be39b" stroke-width="2.5" stroke-linecap="round"/><polygon points="88.0,102.0 96.0,98.0 96.0,106.0" fill="#5be39b"/><rect x="124" y="90" width="54" height="16" rx="8.0" fill="#121826" stroke="#5be39b" stroke-width="1.5" /><text x="151.0" y="101.0" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#5be39b" text-anchor="middle">JSON</text></svg></div>
       <div class="proj-top">
         <h3>REST API Service</h3>
         <span class="proj-link">↗</span>
@@ -470,6 +530,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/db-integration-project3.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Database with create, read, update, delete operations" xmlns="http://www.w3.org/2000/svg"><path d="M118,46 v62 a42,12 0 0 0 84,0 v-62" fill="#1b2437" stroke="#45e0d5" stroke-width="2"/><ellipse cx="160" cy="46" rx="42" ry="12" fill="#121826" stroke="#45e0d5" stroke-width="2"/><path d="M118,66.66666666666667 a42,12 0 0 0 84,0" fill="none" stroke="#45e0d5" stroke-width="1.5" opacity=".6"/><path d="M118,87.33333333333334 a42,12 0 0 0 84,0" fill="none" stroke="#45e0d5" stroke-width="1.5" opacity=".6"/><line x1="74" y1="44" x2="118" y2="80" stroke="#45e0d5" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/><circle cx="56" cy="38" r="16" fill="#121826" stroke="#45e0d5" stroke-width="2" /><text x="56" y="43" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="15" font-weight="700" fill="#45e0d5" text-anchor="middle">C</text><line x1="246" y1="44" x2="202" y2="80" stroke="#b77cff" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/><circle cx="264" cy="38" r="16" fill="#121826" stroke="#b77cff" stroke-width="2" /><text x="264" y="43" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="15" font-weight="700" fill="#b77cff" text-anchor="middle">R</text><line x1="74" y1="116" x2="118" y2="80" stroke="#ffb454" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/><circle cx="56" cy="122" r="16" fill="#121826" stroke="#ffb454" stroke-width="2" /><text x="56" y="127" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="15" font-weight="700" fill="#ffb454" text-anchor="middle">U</text><line x1="246" y1="116" x2="202" y2="80" stroke="#5be39b" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/><circle cx="264" cy="122" r="16" fill="#121826" stroke="#5be39b" stroke-width="2" /><text x="264" y="127" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="15" font-weight="700" fill="#5be39b" text-anchor="middle">D</text><text x="160" y="84" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="400" fill="#8993a8" text-anchor="middle">SQLite</text></svg></div>
       <div class="proj-top">
         <h3>SQLite CRUD API</h3>
         <span class="proj-link">↗</span>
@@ -481,6 +542,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/frontend-backend-integration-project4.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Frontend connected to backend" xmlns="http://www.w3.org/2000/svg"><rect x="22" y="34" width="96" height="92" rx="8" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><circle cx="34" cy="45" r="2.5" fill="#ff6b6b" stroke="none" stroke-width="1.5" /><circle cx="43" cy="45" r="2.5" fill="#ffb454" stroke="none" stroke-width="1.5" /><circle cx="52" cy="45" r="2.5" fill="#5be39b" stroke="none" stroke-width="1.5" /><rect x="34" y="56" width="72" height="12" rx="3" fill="#121826" stroke="#334060" stroke-width="1" /><rect x="34" y="74" width="34" height="36" rx="4" fill="#121826" stroke="#45e0d5" stroke-width="1.2" /><rect x="72" y="74" width="34" height="16" rx="4" fill="#121826" stroke="#334060" stroke-width="1" /><rect x="72" y="94" width="34" height="16" rx="4" fill="#121826" stroke="#334060" stroke-width="1" /><text x="70" y="138" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#45e0d5" text-anchor="middle">UI</text><rect x="212" y="34" width="86" height="92" rx="8" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><rect x="220" y="44" width="70" height="20" rx="4" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="230" cy="54" r="3.5" fill="#5be39b" stroke="none" stroke-width="1.5" /><line x1="240" y1="54" x2="282" y2="54" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><rect x="220" y="70" width="70" height="20" rx="4" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="230" cy="80" r="3.5" fill="#ffb454" stroke="none" stroke-width="1.5" /><line x1="240" y1="80" x2="282" y2="80" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><rect x="220" y="96" width="70" height="20" rx="4" fill="#121826" stroke="#334060" stroke-width="1" /><circle cx="230" cy="106" r="3.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><line x1="240" y1="106" x2="282" y2="106" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><text x="255" y="138" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#b77cff" text-anchor="middle">API</text><line x1="126.0" y1="72.0" x2="196.0" y2="72.0" stroke="#45e0d5" stroke-width="2.5" stroke-linecap="round"/><polygon points="204.0,72.0 196.0,76.0 196.0,68.0" fill="#45e0d5"/><line x1="204.0" y1="90.0" x2="134.0" y2="90.0" stroke="#b77cff" stroke-width="2.5" stroke-linecap="round"/><polygon points="126.0,90.0 134.0,86.0 134.0,94.0" fill="#b77cff"/><circle cx="142" cy="62" r="2.8" fill="#ffb454" stroke="none" stroke-width="1.5" /><circle cx="165" cy="62" r="2.8" fill="#5be39b" stroke="none" stroke-width="1.5" /><circle cx="186" cy="62" r="2.8" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="150" cy="100" r="2.8" fill="#ffb454" stroke="none" stroke-width="1.5" /><circle cx="174" cy="100" r="2.8" fill="#5be39b" stroke="none" stroke-width="1.5" /></svg></div>
       <div class="proj-top">
         <h3>Frontend–Backend Integration</h3>
         <span class="proj-link">↗</span>
@@ -492,6 +554,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/AI-Quiz-Generator.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Multiple choice quiz card" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="12" width="200" height="136" rx="12" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><line x1="78" y1="32" x2="198" y2="32" stroke="#e7ecf5" stroke-width="6" stroke-linecap="round" /><line x1="78" y1="44" x2="160" y2="44" stroke="#8993a8" stroke-width="4" stroke-linecap="round" /><rect x="76" y="52" width="168" height="17" rx="8.5" fill="#121826" stroke="#334060" stroke-width="1.5" /><circle cx="88" cy="60.5" r="6" fill="#1b2437" stroke="#334060" stroke-width="1" /><text x="88" y="63.5" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8" font-weight="700" fill="#8993a8" text-anchor="middle">A</text><line x1="100" y1="60.5" x2="180" y2="60.5" stroke="#3a4663" stroke-width="4" stroke-linecap="round" /><rect x="76" y="74" width="168" height="17" rx="8.5" fill="#143027" stroke="#5be39b" stroke-width="1.5" /><circle cx="88" cy="82.5" r="6" fill="#5be39b" stroke="none" stroke-width="1" /><text x="88" y="85.5" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8" font-weight="700" fill="#06101a" text-anchor="middle">B</text><line x1="100" y1="82.5" x2="198" y2="82.5" stroke="#3a4663" stroke-width="4" stroke-linecap="round" /><rect x="76" y="96" width="168" height="17" rx="8.5" fill="#121826" stroke="#334060" stroke-width="1.5" /><circle cx="88" cy="104.5" r="6" fill="#1b2437" stroke="#334060" stroke-width="1" /><text x="88" y="107.5" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8" font-weight="700" fill="#8993a8" text-anchor="middle">C</text><line x1="100" y1="104.5" x2="180" y2="104.5" stroke="#3a4663" stroke-width="4" stroke-linecap="round" /><rect x="76" y="118" width="168" height="17" rx="8.5" fill="#121826" stroke="#334060" stroke-width="1.5" /><circle cx="88" cy="126.5" r="6" fill="#1b2437" stroke="#334060" stroke-width="1" /><text x="88" y="129.5" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8" font-weight="700" fill="#8993a8" text-anchor="middle">D</text><line x1="100" y1="126.5" x2="180" y2="126.5" stroke="#3a4663" stroke-width="4" stroke-linecap="round" /><path d="M229,82 l4,4 l8,-9" fill="none" stroke="#5be39b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M280,17 Q280,28 291,28 Q280,28 280,39 Q280,28 269,28 Q280,28 280,17Z" fill="#ffb454"/><path d="M40,105 Q40,112 47,112 Q40,112 40,119 Q40,112 33,112 Q40,112 40,105Z" fill="#45e0d5"/></svg></div>
       <div class="proj-top">
         <h3>AI Quiz Generator</h3>
         <span class="proj-link">↗</span>
@@ -503,6 +566,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/AI-News-Agent.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="News feed processed by an AI agent and emailed" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="24" width="84" height="32" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><rect x="22" y="30" width="20" height="20" rx="3" fill="#121826" stroke="#45e0d5" stroke-width="1.2" /><line x1="48" y1="35" x2="92" y2="35" stroke="#e7ecf5" stroke-width="4" stroke-linecap="round" /><line x1="48" y1="45" x2="82" y2="45" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="102.0" y1="40.0" x2="124.7" y2="75.0" stroke="#3a4663" stroke-width="1.6" stroke-linecap="round"/><polygon points="128.0,80.0 122.2,76.6 127.2,73.3" fill="#3a4663"/><rect x="16" y="62" width="84" height="32" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><rect x="22" y="68" width="20" height="20" rx="3" fill="#121826" stroke="#b77cff" stroke-width="1.2" /><line x1="48" y1="73" x2="92" y2="73" stroke="#e7ecf5" stroke-width="4" stroke-linecap="round" /><line x1="48" y1="83" x2="82" y2="83" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="102.0" y1="78.0" x2="122.0" y2="79.5" stroke="#3a4663" stroke-width="1.6" stroke-linecap="round"/><polygon points="128.0,80.0 121.8,82.5 122.2,76.5" fill="#3a4663"/><rect x="16" y="100" width="84" height="32" rx="5" fill="#1b2437" stroke="#334060" stroke-width="1.5" /><rect x="22" y="106" width="20" height="20" rx="3" fill="#121826" stroke="#ffb454" stroke-width="1.2" /><line x1="48" y1="111" x2="92" y2="111" stroke="#e7ecf5" stroke-width="4" stroke-linecap="round" /><line x1="48" y1="121" x2="82" y2="121" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="102.0" y1="116.0" x2="124.5" y2="84.9" stroke="#3a4663" stroke-width="1.6" stroke-linecap="round"/><polygon points="128.0,80.0 126.9,86.6 122.1,83.1" fill="#3a4663"/><circle cx="158" cy="80" r="28" fill="#1b2437" stroke="#b77cff" stroke-width="2.5" /><circle cx="148" cy="76" r="4" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="168" cy="76" r="4" fill="#b77cff" stroke="none" stroke-width="1.5" /><line x1="148" y1="92" x2="168" y2="92" stroke="#b77cff" stroke-width="2.5" stroke-linecap="round" /><line x1="158" y1="52" x2="158" y2="44" stroke="#b77cff" stroke-width="2" stroke-linecap="round" /><circle cx="158" cy="41" r="3.5" fill="#ffb454" stroke="none" stroke-width="1.5" /><line x1="188.0" y1="80.0" x2="214.0" y2="80.0" stroke="#45e0d5" stroke-width="2.5" stroke-linecap="round"/><polygon points="222.0,80.0 214.0,84.0 214.0,76.0" fill="#45e0d5"/><rect x="226" y="54" width="76" height="52" rx="6" fill="#1b2437" stroke="#45e0d5" stroke-width="2" /><path d="M226,58 L264,86 L302,58" fill="none" stroke="#45e0d5" stroke-width="2" stroke-linejoin="round"/><line x1="236" y1="98" x2="254" y2="98" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /><line x1="274" y1="98" x2="292" y2="98" stroke="#3a4663" stroke-width="3" stroke-linecap="round" /></svg></div>
       <div class="proj-top">
         <h3>AI News Content Agent</h3>
         <span class="proj-link">↗</span>
@@ -514,6 +578,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/Fast-API.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fast API endpoints" xmlns="http://www.w3.org/2000/svg"><circle cx="160" cy="80" r="42" fill="#121826" stroke="#5be39b" stroke-width="2.5" /><circle cx="160" cy="80" r="52" fill="none" stroke="#5be39b" stroke-width="1" opacity=".35" stroke-dasharray="3 5"/><polygon points="168,50 146,86 160,86 152,112 178,74 163,74" fill="#5be39b"/><rect x="20" y="30" width="66" height="18" rx="9.0" fill="#121826" stroke="#45e0d5" stroke-width="1.5" /><text x="53.0" y="41.833333333333336" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8.5" font-weight="700" fill="#45e0d5" text-anchor="middle">/docs</text><line x1="86" y1="39" x2="118" y2="80" stroke="#45e0d5" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 4" opacity=".7"/><rect x="234" y="30" width="66" height="18" rx="9.0" fill="#121826" stroke="#b77cff" stroke-width="1.5" /><text x="267.0" y="41.833333333333336" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8.5" font-weight="700" fill="#b77cff" text-anchor="middle">/items</text><line x1="234" y1="39" x2="202" y2="80" stroke="#b77cff" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 4" opacity=".7"/><rect x="14" y="116" width="84" height="18" rx="9.0" fill="#121826" stroke="#ffb454" stroke-width="1.5" /><text x="56.0" y="127.83333333333333" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8.5" font-weight="700" fill="#ffb454" text-anchor="middle">GET /users</text><line x1="98" y1="125" x2="118" y2="80" stroke="#ffb454" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 4" opacity=".7"/><rect x="226" y="116" width="84" height="18" rx="9.0" fill="#121826" stroke="#5be39b" stroke-width="1.5" /><text x="268.0" y="127.83333333333333" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="8.5" font-weight="700" fill="#5be39b" text-anchor="middle">POST /items</text><line x1="226" y1="125" x2="202" y2="80" stroke="#5be39b" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 4" opacity=".7"/></svg></div>
       <div class="proj-top">
         <h3>FastAPI Project</h3>
         <span class="proj-link">↗</span>
@@ -525,6 +590,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/Student_KNN_Project.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Scatter plot of K-nearest neighbors classification" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="134" x2="300" y2="134" stroke="#334060" stroke-width="2" stroke-linecap="round" /><line x1="30" y1="134" x2="30" y2="16" stroke="#334060" stroke-width="2" stroke-linecap="round" /><circle cx="90" cy="100" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="105" cy="92" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="80" cy="112" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="100" cy="110" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="115" cy="104" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="95" cy="122" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="68" cy="98" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="122" cy="118" r="5.5" fill="#45e0d5" stroke="none" stroke-width="1.5" /><circle cx="222" cy="44" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="242" cy="56" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="234" cy="34" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="256" cy="48" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="216" cy="62" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="246" cy="72" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="228" cy="58" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="262" cy="66" r="5.5" fill="#b77cff" stroke="none" stroke-width="1.5" /><circle cx="150" cy="82" r="48" fill="none" stroke="#ffb454" stroke-width="1.8" stroke-dasharray="4 5"/><line x1="150" y1="82" x2="115" y2="104" stroke="#ffb454" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><line x1="150" y1="82" x2="105" y2="92" stroke="#ffb454" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><line x1="150" y1="82" x2="100" y2="110" stroke="#ffb454" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><circle cx="150" cy="82" r="7.5" fill="#ffb454" stroke="none" stroke-width="1.5" /><text x="150" y="66" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="13" font-weight="700" fill="#ffb454" text-anchor="middle">?</text><text x="60" y="24" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="10" font-weight="700" fill="#ffb454" text-anchor="start">k = 3</text></svg></div>
       <div class="proj-top">
         <h3>Student KNN Project</h3>
         <span class="proj-link">↗</span>
@@ -536,6 +602,7 @@
     </a>
 
     <a class="proj-card" href="https://github.com/sohaib25225-gif/Page_Rank_Algorithm.git" target="_blank" rel="noopener">
+      <div class="proj-thumb"><svg viewBox="0 0 320 160" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Network graph with ranked nodes" xmlns="http://www.w3.org/2000/svg"><line x1="77.9" y1="47.5" x2="126.5" y2="66.8" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="133.0,69.3 125.2,70.0 127.8,63.5" fill="#46557a"/><line x1="91.3" y1="119.5" x2="128.8" y2="97.9" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="134.9,94.5 130.5,101.0 127.0,94.9" fill="#46557a"/><line x1="242.4" y1="44.7" x2="193.1" y2="65.8" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="186.7,68.6 191.7,62.6 194.5,69.0" fill="#46557a"/><line x1="237.3" y1="116.1" x2="192.6" y2="95.2" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="186.3,92.3 194.1,92.1 191.1,98.4" fill="#46557a"/><line x1="160.0" y1="31.0" x2="160.0" y2="44.0" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="160.0,51.0 156.5,44.0 163.5,44.0" fill="#46557a"/><line x1="236.0" y1="122.3" x2="101.0" y2="125.5" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="94.0,125.7 100.9,122.0 101.1,129.0" fill="#46557a"/><line x1="185.7" y1="69.0" x2="235.0" y2="47.8" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="241.5,45.1 236.4,51.1 233.6,44.6" fill="#46557a"/><line x1="78.7" y1="38.9" x2="143.4" y2="25.5" stroke="#46557a" stroke-width="1.8" stroke-linecap="round"/><polygon points="150.2,24.0 144.1,28.9 142.6,22.0" fill="#46557a"/><circle cx="160" cy="80" r="28" fill="#1b2437" stroke="#ffb454" stroke-width="2.5" /><text x="160" y="84" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="12" font-weight="700" fill="#ffb454" text-anchor="middle">A</text><circle cx="64" cy="42" r="15" fill="#1b2437" stroke="#b77cff" stroke-width="2.5" /><text x="64" y="46" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="12" font-weight="700" fill="#b77cff" text-anchor="middle">B</text><circle cx="80" cy="126" r="13" fill="#1b2437" stroke="#45e0d5" stroke-width="2.5" /><text x="80" y="130" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="12" font-weight="700" fill="#45e0d5" text-anchor="middle">C</text><circle cx="258" cy="38" r="17" fill="#1b2437" stroke="#5be39b" stroke-width="2.5" /><text x="258" y="42" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="12" font-weight="700" fill="#5be39b" text-anchor="middle">D</text><circle cx="250" cy="122" r="14" fill="#1b2437" stroke="#b77cff" stroke-width="2.5" /><text x="250" y="126" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="12" font-weight="700" fill="#b77cff" text-anchor="middle">E</text><circle cx="160" cy="22" r="9" fill="#1b2437" stroke="#45e0d5" stroke-width="2.5" /><text x="160" y="26" font-family="JetBrains Mono,DejaVu Sans Mono,monospace" font-size="9" font-weight="700" fill="#45e0d5" text-anchor="middle">F</text><circle cx="160" cy="80" r="36" fill="none" stroke="#ffb454" stroke-width="1" opacity=".35" stroke-dasharray="3 5"/></svg></div>
       <div class="proj-top">
         <h3>PageRank Algorithm</h3>
         <span class="proj-link">↗</span>
